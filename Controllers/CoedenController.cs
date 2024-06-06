@@ -10,6 +10,7 @@ using Coeden.Models;
 using Coeden.Services;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Mvc;
+using portfolio.Coeden.Models;
 
 
 namespace Coeden.Controller
@@ -26,10 +27,11 @@ namespace Coeden.Controller
 
     [Route("/trees")]
     [HttpGet]
-    public async Task<List<Tree>> GetTrees(double N, double S, double E, double W)
+    public async Task<TreesDataDTO> GetTrees(double N, double S, double E, double W)
     {
       var localTrees = await _treeService.GetTreesByBounds(N, S, E, W);
-      return localTrees;
+      Console.WriteLine(localTrees.Count());
+      return new TreesDataDTO(localTrees, N, S, E, W);
     }
     // [Route("/singleTree")]
     // [HttpGet]

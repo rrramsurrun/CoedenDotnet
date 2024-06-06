@@ -26,7 +26,7 @@ namespace Coeden.Services
 
     public async Task<List<Tree>> GetTreesByBounds(double N, double S, double E, double W)
     {
-      return _treeCollection.Find(tree => tree.Latitude >= S && tree.Latitude <= N && tree.Longitude <= E && tree.Longitude >= W).ToList();
+      return await _treeCollection.Find(tree => tree.Latitude >= S && tree.Latitude <= N && tree.Longitude <= E && tree.Longitude >= W).ToListAsync();
     }
 
 
