@@ -30,15 +30,18 @@ namespace Coeden.Controller
     public async Task<TreesDataDTO> GetTrees(double N, double S, double E, double W)
     {
       var localTrees = await _treeService.GetTreesByBounds(N, S, E, W);
-      Console.WriteLine(localTrees.Count());
       return new TreesDataDTO(localTrees, N, S, E, W);
     }
-    // [Route("/singleTree")]
-    // [HttpGet]
-    // public async Task<Tree[]> GetTree()
-    // {
-    //   return [];
-    // }
+    [Route("/treeDetails")]
+    [HttpGet]
+    public async Task<TreesDetailsDTO> GetTrees(string genus, string species)
+    {
+
+      var genusObj = await _treeService.GetGenus(genus);
+      var speciesObj = await _treeService.GetSpecies(species);
+
+      return new TreesDetailsDTO(genusObj, speciesObj);
+    }
 
 
   }

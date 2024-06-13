@@ -12,5 +12,7 @@ namespace Coeden.Models
     public string DatabaseName { get; set; } = null!;
 
     public string TreesCollectionName { get; set; } = null!;
+    public string GenusCollectionName { get; set; } = null!;
+    public string SpeciesCollectionName { get; set; } = null!;
   }
 }
